@@ -73,7 +73,39 @@ def gcd(a, b):
 def relatively_prime(a,b):
 	return gcd(a,b) == 1
 
-for i in range(1,50):
-	for j in range(1, 50):
-		print "(%i,%i) = %r" %(i, j, relatively_prime(i,j))
+def phi(m):
+	primes = prime_factors(m)
+	power_counts ={}
+	while primes != []:
+		i = primes[0]
+		count = primes.count(i)
+		power_counts[i] = count
+		primes = primes[count:]
+	prod  = 1
+	for prime in power_counts:
+		prod *=  (prime-1) * (prime ** (power_counts[prime] -1)) 
 
+	return prod
+
+def d(n):
+	return len(pos_factors(n))
+
+def all_factors(n):
+	l = []
+	for i in pos_factors(n):
+		l.append(-i)
+	return pos_factors(n)+l
+
+def lcm(a, b):
+	return (a * b) / gcd(a,b)
+
+def nth_prime(n):
+	return n_primes(n)[n-1]
+
+
+
+i =1
+while True:
+	x = nth_prime(i)
+	i = x
+	print x
