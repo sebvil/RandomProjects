@@ -1,4 +1,7 @@
+import argparse
+
 def ana(word):
+	word = word.lower()
 	length = len(word)
 	if length == 1:
 		return [word]
@@ -14,9 +17,15 @@ def ana(word):
 					words.append(letter+j)
 		return words
 
-print ana("a")
-print ana("aa")
-print ana("abc")
-print ana("Chema")
 
 
+ap = argparse.ArgumentParser()
+ap.add_argument("-w", "--word", required = False, help = "Word to find the anagrams of")
+args = vars(ap.parse_args())
+
+
+try:
+	word = args["word"]
+	print ana(word)
+except AttributeError:
+	pass
