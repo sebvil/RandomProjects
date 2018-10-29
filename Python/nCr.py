@@ -7,3 +7,5 @@ def nCr(n, r):
 	prod  = p/ den
 	return prod
 
+
+print nCr(13, 10)

@@ -20,12 +20,14 @@ def ana(word):
 
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-w", "--word", required = False, help = "Word to find the anagrams of")
+ap.add_argument("-w", "--word", required = True, help = "Word to find the anagrams of")
 args = vars(ap.parse_args())
 
 
 try:
 	word = args["word"]
-	print ana(word)
+	ans =  ana(word)
+	print ans
+	print len(ans)
 except AttributeError:
 	pass
