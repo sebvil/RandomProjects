@@ -1,11 +1,18 @@
 from functools import reduce
 
 def nCr(n, r):
-	x = n-r
-	p = reduce((lambda a,b: a* b), range(x+1, n+1))
-	den = reduce((lambda a,b: a*b), range(1, r+1))
-	prod  = p/ den
+	if r == 0:
+		return 1
+	den = factorial(r)
+
+	num = reduce((lambda x,y: x*y), range(n-r+1, n+1))
+	prod  = num / den
 	return prod
 
 
-print nCr(13, 10)
+def factorial(n):
+	if n == 0:
+		return 1
+	else: 
+		return reduce((lambda x,y: x * y), range(1,n+1))
+
